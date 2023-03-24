@@ -97,7 +97,7 @@ def draw():
         goto(x + 2, y)
         color('black')
          """Se cambia la alineación de las figuras"""
-        write(tiles[mark], align='left, font=('Arial', 30, 'normal'))
+        write(tiles[mark], align='left', font=('Arial', 30, 'normal'))
 
     update()
     ontimer(draw, 100)
