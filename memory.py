@@ -16,6 +16,8 @@ from freegames import path
 
 car = path('car.gif')
 """Lista de las figuras del memorama"""
+tp = 0 #Variable para el número de taps
+pa = 0 #Variable para el número de parejas descuebiertas 
 tiles = ['🐶','🐱','🐭','🐹','🐰','🐻','🧸','🐼','🐘','🐨','🐯',
          '🦁','🐮','🐷','🐸','🐵','🦍','🦧','🐔','🐧','🐦','🐺',
          '🦝','🦓','🦫','🐛','🐙','🐢','🐊','🐁','🦨','🦖'] * 2
@@ -47,17 +49,26 @@ def xy(count):
     return (count % 8) * 50 - 200, (count // 8) * 50 - 200
 
 
-def tap(x, y):
+def tap(x, y,):
     """Update mark and hidden tiles based on tap."""
     spot = index(x, y)
     mark = state['mark']
-
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
         state['mark'] = spot
+    
     else:
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
+        global pa #Variable global pa
+        pa += 1   #Le suma 1 a pa cada que se descubra una pareja
+    #number of taps...
+    global tp #Utilizar variable global
+    tp += 1   #Se suma 1 cada que se destapa la tapa
+    print("Taps opened: "+ str(tp)) #Se imprime la variable en pantalla
+
+    if pa == 32:             #Esta es la condicion de que ya se destaparon todas las parejas posibles
+        print("YOU WIN!!!") #Mensaje de victoria
 
 
 def draw():
