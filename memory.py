@@ -15,7 +15,11 @@ from turtle import *
 from freegames import path
 
 car = path('car.gif')
-tiles = list(range(32)) * 2
+"""Lista de las figuras del memorama"""
+tiles = ['🐶','🐱','🐭','🐹','🐰','🐻','🧸','🐼','🐘','🐨','🐯',
+         '🦁','🐮','🐷','🐸','🐵','🦍','🦧','🐔','🐧','🐦','🐺',
+         '🦝','🦓','🦫','🐛','🐙','🐢','🐊','🐁','🦨','🦖'] * 2
+
 state = {'mark': None}
 hide = [True] * 64
 
