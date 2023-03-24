@@ -15,9 +15,11 @@ from turtle import *
 from freegames import path
 
 car = path('car.gif')
+"""Variable para el número de taps"""
+tp = 0 
+"""Variable para el número de parejas descubiertas"""
+pa = 0 
 """Lista de las figuras del memorama"""
-tp = 0 #Variable para el número de taps
-pa = 0 #Variable para el número de parejas descuebiertas 
 tiles = ['🐶','🐱','🐭','🐹','🐰','🐻','🧸','🐼','🐘','🐨','🐯',
          '🦁','🐮','🐷','🐸','🐵','🦍','🦧','🐔','🐧','🐦','🐺',
          '🦝','🦓','🦫','🐛','🐙','🐢','🐊','🐁','🦨','🦖'] * 2
@@ -60,15 +62,19 @@ def tap(x, y,):
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
-        global pa #Variable global pa
-        pa += 1   #Le suma 1 a pa cada que se descubra una pareja
-    #number of taps...
-    global tp #Utilizar variable global
-    tp += 1   #Se suma 1 cada que se destapa la tapa
-    print("Taps opened: "+ str(tp)) #Se imprime la variable en pantalla
-
-    if pa == 32:             #Esta es la condicion de que ya se destaparon todas las parejas posibles
-        print("YOU WIN!!!") #Mensaje de victoria
+        """Variable global pa"""
+        global pa 
+        """Sumar 1 a pa cada que se descubra una pareja"""
+        pa += 1   
+    """Variable global tp"""
+    global tp 
+    """"Se suma 1 cada que se destapa una tapa"""
+    tp += 1   
+    """Se imprime la variable en pantalla"""
+    print("Taps opened: "+ str(tp)) 
+    """Condición para saber si ya se destaparon todas las parejas posibles"""
+    if pa == 32:             
+        print("YOU WIN!!!") 
 
 
 def draw():
@@ -90,7 +96,8 @@ def draw():
         up()
         goto(x + 2, y)
         color('black')
-        write(tiles[mark], align='left', font=('Arial', 30, 'normal'))
+         """Se cambia la alineación de las figuras"""
+        write(tiles[mark], align='center', font=('Arial', 30, 'normal'))
 
     update()
     ontimer(draw, 100)
